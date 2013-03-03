@@ -1,0 +1,63 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+$margin: 20px;
+$bgcolor: #F8F8F8;
+$border: #C0C0C0;
+$shadow: $border / 1;
+$smaller: 0.8em;
+
+@mixin rounded-well {
+	padding: $margin;
+   margin: $margin 0 0 0;
+   background-color: $bgcolor;
+   border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+   -moz-box-shadow: 2px 2px 2px 2px $shadow;
+   -webkit-box-shadow: 2px 2px 2px 2px $shadow;
+   box-shadow: 2px 2px 2px 2px $shadow;
+}
+
+.kblog {
+	font-family:Verdana, Arial, Helvetika;
+	padding: 0 50px 0 50px;
+	.pagination-links {
+		text-align: center;
+		margin-top: $margin;
+	}
+}
+
+.kblog-article {
+	h2 { 
+		margin-top: -10px;
+		color: $border/3;
+	 }	
+	@include rounded-well;
+
+	.kblog-content {
+		text-align: justify;
+		text-indent:20px;
+	}
+	.kblog-created {
+		float:right;
+		overflow: hidden;
+		color: $border;
+		font-size: $smaller;
+	}
+}
+
+.kblog-links {
+		margin-top: 10px;
+		text-align:right;
+		clear:all;
+}
+
+.kblog-form {
+	@include rounded-well;
+	label { font-size: $smaller; }
+}
+
+

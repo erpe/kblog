@@ -1,0 +1,15 @@
+<article class="kblog-article">
+	<aside class="kblog-created">
+		<%= localize(article.created_at, format: :long) %>
+	</aside>
+	<h2><%= article.title %></h2>
+
+	<div class="kblog-content">
+		<%= textilize(article.content).html_safe %>
+	</div>
+
+	<div class="kblog-links">
+		<%= link_to 'Edit', edit_article_path(article) %> |
+		<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %>
+	</div>
+</article>

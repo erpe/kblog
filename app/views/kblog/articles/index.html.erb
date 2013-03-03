@@ -1,0 +1,11 @@
+<section class="kblog">
+	<h1>KBlog</h1>
+	<%= render(:partial => 'article', :collection => @articles) %>
+	<div class="pagination-links">
+		<%= will_paginate(@articles) %>  	
+	</div>
+	<div class="kblog-links">
+		<%= link_to 'New Article', new_article_path %>
+	</div>
+</section>
+
