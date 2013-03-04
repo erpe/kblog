@@ -1,0 +1,8 @@
+Description:
+    Creates simple initializer for Kblog
+
+Example:
+    rails generate kblog 
+
+    This will create:
+        config/initializer/kblog_init.rb

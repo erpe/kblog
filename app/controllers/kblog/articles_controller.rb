@@ -4,6 +4,10 @@ module Kblog
   class ArticlesController < ApplicationController
     before_filter :set_article, only: [:show, :edit, :update, :destroy]
 
+	if Kblog.authentication == 'basic'
+		http_basic_authenticate_with :name => Kblog.authname, :password => Kblog.authpassword, :except => [:index,:show]
+	end
+
     # GET /articles
     def index
       @articles = Article.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)

@@ -1,3 +1,11 @@
 = Kblog
 
-This project rocks and uses MIT-LICENSE.
+Simple blog-engine for rails.
+
+== installation
+
+
+* gem install kblog
+* rake kblog:migrations:install
+* rails g kblog
+

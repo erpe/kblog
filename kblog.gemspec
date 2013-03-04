@@ -7,16 +7,19 @@ require "kblog/version"
 Gem::Specification.new do |s|
   s.name        = "kblog"
   s.version     = Kblog::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Kblog."
-  s.description = "TODO: Description of Kblog."
+  s.authors     = ["rene paulokat"]
+  s.email       = ["rene@so36.net"]
+  s.homepage    = "http://www.kluuu.com"
+  s.summary     = "a simplistic blog engine for rails"
+  s.description = "Kblog is a very lightweight mountable blog-engine for rails\nprovides simple helper in your views."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.13.rc1"
+  s.add_dependency "rails", "~> 3.2.0"
+  s.add_dependency "sass"
+  s.add_dependency 'will_paginate'
+  s.add_dependency 'RedCloth'
   # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"
