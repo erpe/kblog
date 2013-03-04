@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Kblog::VERSION
   s.authors     = ["rene paulokat"]
   s.email       = ["rene@so36.net"]
-  s.homepage    = "http://www.kluuu.com"
+  s.homepage    = "https://github.com/erpe/kblog"
   s.summary     = "a simplistic blog engine for rails"
   s.description = "Kblog is a very lightweight mountable blog-engine for rails\nprovides simple helper in your views."
 
