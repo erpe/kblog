@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="kblog-links">
-		<%= link_to 'Edit', edit_article_path(article) %> |
-		<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %>
+		<%= link_to 'Edit', kblog.edit_article_path(article) %> |
+		<%= link_to 'Destroy', kblog.article_path(article), :confirm => 'Are you sure?', :method => :delete %>
 	</div>
 </article>
