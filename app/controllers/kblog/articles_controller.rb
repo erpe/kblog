@@ -2,7 +2,9 @@ require_dependency "kblog/application_controller"
 
 module Kblog
   class ArticlesController < ApplicationController
-    before_filter :set_article, only: [:show, :edit, :update, :destroy]
+   before_filter :set_blog_user
+	before_filter :set_article, only: [:show, :edit, :update, :destroy]
+	 
 
 	if Kblog.authentication == 'basic'
 		http_basic_authenticate_with :name => Kblog.authname, :password => Kblog.authpassword, :except => [:index,:show]
@@ -57,6 +59,12 @@ module Kblog
       def set_article
         @article = Article.find(params[:id])
       end
+
+		def set_blog_user
+			if current_user
+				@blog_user = current_user
+			end
+		end
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def article_params

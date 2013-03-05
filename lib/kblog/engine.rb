@@ -1,5 +1,5 @@
 require 'will_paginate'
-require 'RedCloth'
+#require 'RedCloth'
 require 'sass'
 
 module Kblog

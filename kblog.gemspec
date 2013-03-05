@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["rene@so36.net"]
   s.homepage    = "https://github.com/erpe/kblog"
   s.summary     = "a simplistic blog engine for rails"
-  s.description = "Kblog is a very lightweight mountable blog-engine for rails\nprovides simple helper in your views."
+  s.description = "Kblog is a very simplistic and lightweight mountable blog-engine for rails\nprovides simple helper in your views."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
