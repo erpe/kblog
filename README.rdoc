@@ -4,8 +4,22 @@ Simple blog-engine for rails.
 
 == installation
 
-
 * gem install kblog
 * rake kblog:migrations:install
-* rails g kblog
+* rake db:migrate
+* rails g kblog # creates kblog_init.rb in config/initializers
+* add the engine to route.rb: 
+
+mount Kblog::Engine => "/kblog"
+
+* perhaps add provided css to your layoutfile:
+
+<%= stylesheet_link_tag 'kblog/articles', :media => "all" %>
+
+== usage
+
+* add helper <%= display_latest_articles(num=1) %> to your views
+* if mounted to /kblog visit index: /kblog/articles - 
+
+
 
