@@ -19,11 +19,9 @@ No relation to author present.
 
 <tt><%= stylesheet_link_tag 'kblog/articles', :media => "all" %></tt>
 
-=== configuration
-
 adopt config/initializer/kblog_init.rb:
 
-[role-based authentication] 	role-based rights to create/alter blog-articles  
+[role-based authentication]	role-based rights to create/alter blog-articles  
 	user_class must respond_to :roles - and each role
 	string representation role.to_s == Kblog.auth_role  
 
@@ -31,7 +29,8 @@ adopt config/initializer/kblog_init.rb:
 
 <tt>Kblog.auth_role = 'blogger'   # role needed to alter blogs</tt>
 
-[basic-auth]	makes use of simple http-basic auth - configure as needed....
+[basic-auth]	makes use of simple http-basic auth.
+	configure with desired name/passwword
 
 <tt>Kblog.auth_type == 'basic'</tt>
 
