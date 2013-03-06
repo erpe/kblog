@@ -24,6 +24,7 @@ adopt config/initializer/kblog_init.rb:
 [role-based authentication]	role-based rights to create/alter blog-articles  
 										user_class must respond_to :roles - and each role
 										tring representation role.to_s == Kblog.auth_role  
+										expects *current_user* beeing available in views and 										 controller
 
 <tt>Kblog.auth_type = 'role'</tt>
 
