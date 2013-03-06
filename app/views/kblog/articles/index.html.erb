@@ -1,5 +1,5 @@
 <section class="kblog">
-	<h1>KBlog</h1>
+	<h1><%= KBlog.blog_title %></h1>
 	<%= render(:partial => 'article', :collection => @articles) %>
 	<div class="pagination-links">
 		<%= will_paginate(@articles) %>  	

@@ -1,4 +1,7 @@
+# some initialization for kblog
 
+
+Kblog.blog_title = "A new KBlog is born"
 Kblog.user_class = 'User'     # class of blog-author
 
 # select EITHER section basic or role-based authentication

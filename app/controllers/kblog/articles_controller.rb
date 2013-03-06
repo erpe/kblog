@@ -9,9 +9,6 @@ module Kblog
 	if Kblog.auth_type == 'basic'
 		http_basic_authenticate_with :name => Kblog.authname, :password => Kblog.authpassword, :except => [:index,:show]
 	end
-	if Kblog.auth_type == 'role'
-		
-	end
 
     # GET /articles
     def index
@@ -64,7 +61,9 @@ module Kblog
       end
 
 		def set_blog_user
-			if current_user
+			logger.debug("#{self.class.name}#set_blog_user - start")
+			logger.debug("#{self.class.name}#set_blog_user - current_user: #{current_user}")
+			if defined?(current_user)
 				@blog_user = current_user
 			end
 		end
@@ -76,7 +75,7 @@ module Kblog
       end
 		
 		def authenticate
-			render :status => :forbidden and return unless Article.user_rights(@blog_user)
+			render :status => :forbidden and return unless Kblog::Article.user_rights(@blog_user)
 		end	
 	end
 end

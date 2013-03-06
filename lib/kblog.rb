@@ -6,4 +6,5 @@ module Kblog
 	mattr_accessor :authpassword
 	mattr_accessor :auth_role
 	mattr_accessor :user_class
+	mattr_accessor :blog_title
 end
