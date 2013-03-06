@@ -13,15 +13,11 @@ No relation to author present.
 * rails g kblog # creates kblog_init.rb in config/initializers
 * add the engine to route.rb: 
 
-<tt>
-mount Kblog::Engine => "/kblog"
-</tt>
+<tt>mount Kblog::Engine => "/kblog"</tt>
 
 * perhaps add provided css to your layoutfile:
 
-<tt>
-<%= stylesheet_link_tag 'kblog/articles', :media => "all" %>
-</tt>
+<tt><%= stylesheet_link_tag 'kblog/articles', :media => "all" %></tt>
 
 === configuration
 
@@ -31,18 +27,14 @@ adopt config/initializer/kblog_init.rb:
 	user_class must respond_to :roles - and each role
 	string representation role.to_s == Kblog.auth_role  
 
-<tt>
-Kblog.auth_type = 'role'   
-Kblog.auth_role = 'blogger'   # role needed to alter blogs
-</tt>
+<tt>Kblog.auth_type = 'role'</tt>
+<tt>Kblog.auth_role = 'blogger'   # role needed to alter blogs</tt>
 
 [basic-auth]	makes use of simple http-basic auth - configure as needed....
 
-<tt>
-Kblog.auth_type == 'basic'
-Kblog.authname = 'blogger'
-Kblog.authpassword = 'changeme'
-</tt>
+<tt>Kblog.auth_type == 'basic'</tt>
+<tt>Kblog.authname = 'blogger'</tt>
+<tt>Kblog.authpassword = 'changeme'</tt>
 
 == usage
 
