@@ -22,15 +22,15 @@ No relation to author present.
 adopt config/initializer/kblog_init.rb:
 
 [role-based authentication]	role-based rights to create/alter blog-articles  
-	user_class must respond_to :roles - and each role
-	string representation role.to_s == Kblog.auth_role  
+										user_class must respond_to :roles - and each role
+										tring representation role.to_s == Kblog.auth_role  
 
 <tt>Kblog.auth_type = 'role'</tt>
 
 <tt>Kblog.auth_role = 'blogger'   # role needed to alter blogs</tt>
 
 [basic-auth]	makes use of simple http-basic auth.
-	configure with desired name/passwword
+					configure with desired name/passwword
 
 <tt>Kblog.auth_type == 'basic'</tt>
 
