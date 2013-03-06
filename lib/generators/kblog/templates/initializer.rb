@@ -1,23 +1,28 @@
+
+Kblog.user_class = 'User'     # class of blog-author
+
+# select EITHER section basic or role-based authentication
+#
+#######################################################
+# role-based rights to create/alter blog-articles		#
+# user_class must respond_to :roles - and each role	#
+# string representation role.to_s == Kblog.auth_role	#
+#######################################################
+
+#Kblog.auth_type = 'role'   
+#Kblog.auth_role = 'blogger'   # role needed to alter blogs
+
+#########################################################
+# http-basic-auth                                       #
+#########################################################
+Kblog.auth_type == 'basic'
+Kblog.authname = 'blogger'
+Kblog.authpassword = 'changeme'
+
 ActiveSupport.on_load :action_controller do
 	helper Kblog::ArticlesHelper
 end
 
-Kblog.auth_type = nil
-#Kblog.auth_type = 'basic'#
-#Kblog.auth_type = 'role'
-
-if Kblog.auth_type == 'basic'
-	Kblog.authname = 'blogger'
-	Kblog.authpassword = 'changeme'
-end
-
-if Kblog.auth_type == 'role'
-	# expects a User-class which responds to 'roles'
-	# roles should be an array - each role should respond to :name
-	# change to necessary role of current_user
-	Kblog.auth_role == 'blogger' 
-end
 
 require 'RedCloth'
 require 'will_paginate'
-

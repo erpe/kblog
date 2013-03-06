@@ -4,10 +4,13 @@ module Kblog
   class ArticlesController < ApplicationController
    before_filter :set_blog_user
 	before_filter :set_article, only: [:show, :edit, :update, :destroy]
-	 
+	before_filter :authenticate, only: [:edit, :update, :create, :destroy] 
 
-	if Kblog.authentication == 'basic'
+	if Kblog.auth_type == 'basic'
 		http_basic_authenticate_with :name => Kblog.authname, :password => Kblog.authpassword, :except => [:index,:show]
+	end
+	if Kblog.auth_type == 'role'
+		
 	end
 
     # GET /articles
@@ -71,5 +74,9 @@ module Kblog
 			params[:article]
         #params.require(:article).permit(:title, :content)
       end
-  end
+		
+		def authenticate
+			render :status => :forbidden and return unless Article.user_rights(@blog_user)
+		end	
+	end
 end

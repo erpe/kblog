@@ -3,7 +3,10 @@ require 'will_paginate'
 require 'sass'
 
 module Kblog
-  class Engine < ::Rails::Engine
-    isolate_namespace Kblog
-  end
+	class Engine < ::Rails::Engine
+   	isolate_namespace Kblog
+  	end
+
+	
+	
 end

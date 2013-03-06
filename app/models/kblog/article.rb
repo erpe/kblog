@@ -3,12 +3,12 @@ module Kblog
 		attr_accessible :content, :title
 		validates :title, :presence => true
 	
-  		def self.has_create_rights(user)
+  		def self.user_rights(user)
          case Kblog.auth_type
          when 'basic'
-            false
+            true
          when 'role'
-         	user.respond_to?(:roles) && user.roles.map { |r| r.name }.includes?( Kblog.auth_role )  
+         	user.respond_to?(:roles) && user.roles.map { |r| r.to_s }.include?( Kblog.auth_role )  
          end
 		end
 

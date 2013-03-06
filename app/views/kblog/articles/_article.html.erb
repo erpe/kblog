@@ -7,8 +7,7 @@
 	<div class="kblog-content">
 		<%= textilize(article.content).html_safe %>
 	</div>
-	
-	<% if @blog_user && Kblog::Article.has_create_rights(@blog_user) %>
+	<% if @blog_user && Kblog::Article.user_rights(@blog_user) %>
 	<div class="kblog-links">
 		<%= link_to 'Edit', kblog.edit_article_path(article) %> |
 		<%= link_to 'Destroy', kblog.article_path(article), :confirm => 'Are you sure?', :method => :delete %>
