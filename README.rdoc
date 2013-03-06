@@ -28,17 +28,21 @@ adopt config/initializer/kblog_init.rb:
 	string representation role.to_s == Kblog.auth_role  
 
 <tt>Kblog.auth_type = 'role'</tt>
+
 <tt>Kblog.auth_role = 'blogger'   # role needed to alter blogs</tt>
 
 [basic-auth]	makes use of simple http-basic auth - configure as needed....
 
 <tt>Kblog.auth_type == 'basic'</tt>
+
 <tt>Kblog.authname = 'blogger'</tt>
+
 <tt>Kblog.authpassword = 'changeme'</tt>
 
 == usage
 
-* add helper <%= display_latest_articles(num=1) %> to your views
+* add helper 
+<tt><%= display_latest_articles(num=1) %></tt> to your views
 * if mounted to /kblog visit index: /kblog/articles - 
 
 
