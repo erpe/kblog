@@ -1,6 +1,9 @@
 = Kblog
 
 Simple blog-engine for rails.
+Authentication can be done either role-based or via http-basic-auth.
+No specific authentication-framework needed.
+No relation to author present. 
 
 == installation
 
@@ -10,16 +13,40 @@ Simple blog-engine for rails.
 * rails g kblog # creates kblog_init.rb in config/initializers
 * add the engine to route.rb: 
 
+<tt>
 mount Kblog::Engine => "/kblog"
+</tt>
 
 * perhaps add provided css to your layoutfile:
 
+<tt>
 <%= stylesheet_link_tag 'kblog/articles', :media => "all" %>
+</tt>
+
+=== configuration
+
+adopt config/initializer/kblog_init.rb:
+
+[role-based authentication] 	role-based rights to create/alter blog-articles  
+	user_class must respond_to :roles - and each role
+	string representation role.to_s == Kblog.auth_role  
+
+<tt>
+Kblog.auth_type = 'role'   
+Kblog.auth_role = 'blogger'   # role needed to alter blogs
+</tt>
+
+[basic-auth]	makes use of simple http-basic auth - configure as needed....
+
+<tt>
+Kblog.auth_type == 'basic'
+Kblog.authname = 'blogger'
+Kblog.authpassword = 'changeme'
+</tt>
 
 == usage
 
 * add helper <%= display_latest_articles(num=1) %> to your views
 * if mounted to /kblog visit index: /kblog/articles - 
-
 
 
