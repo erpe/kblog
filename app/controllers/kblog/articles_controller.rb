@@ -1,7 +1,8 @@
 require_dependency "kblog/application_controller"
 
 module Kblog
-  class ArticlesController < ApplicationController
+  class ArticlesController < ::ApplicationController
+	layout 'kblog/kblog'
    before_filter :set_blog_user
 	before_filter :set_article, only: [:show, :edit, :update, :destroy]
 	before_filter :authenticate, only: [:edit, :update, :create, :destroy] 
@@ -62,7 +63,6 @@ module Kblog
 
 		def set_blog_user
 			logger.debug("#{self.class.name}#set_blog_user - start")
-			logger.debug("#{self.class.name}#set_blog_user - current_user: #{current_user}")
 			if defined?(current_user)
 				@blog_user = current_user
 			end
@@ -75,7 +75,15 @@ module Kblog
       end
 		
 		def authenticate
-			render :status => :forbidden and return unless Kblog::Article.user_rights(@blog_user)
+			if Kblog.auth_type == 'basic'
+				http_basic_authenticate_with :name => Kblog.authname, :password => Kblog.authpassword, :except => [:index,:show]
+			end
+			if Kblog.auth_type == 'role'
+				unless  Kblog::Article.user_rights(current_user)
+					logger.warn("#{self.class.name}#authenticate - insufficient rights: user: #{current_user}")
+					redirect_to :back, :notice => 'forbidden'
+				end
+			end
 		end	
 	end
 end
