@@ -1,3 +1,6 @@
 <section class="kblog">
-<%= render(:partial => 'article', :locals => { :article => @article} ) %>
+	<%= render(:partial => 'article', :locals => { :article => @article, :limit => false} ) %>
+	<div class="kblog-links">
+	<%= link_to("blog", kblog.articles_path) %>
+	</div>
 </section>

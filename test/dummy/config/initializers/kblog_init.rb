@@ -12,15 +12,15 @@ Kblog.user_class = 'User'     # class of blog-author
 # string representation role.to_s == Kblog.auth_role	#
 #######################################################
 
-Kblog.auth_type = 'role'   
-Kblog.auth_role = 'blogger'   # role needed to alter blogs
+#Kblog.auth_type = 'role'   
+#Kblog.auth_role = 'blogger'   # role needed to alter blogs
 
 #########################################################
 # http-basic-auth                                       #
 #########################################################
-#Kblog.auth_type = 'basic'
-#Kblog.authname = 'blogger'
-#Kblog.authpassword = 'changeme'
+Kblog.auth_type = 'basic'
+Kblog.authname = 'blogger'
+Kblog.authpassword = 'changeme'
 
 ActiveSupport.on_load :action_controller do
 	helper Kblog::ArticlesHelper

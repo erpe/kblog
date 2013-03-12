@@ -9,6 +9,7 @@ $border: #C0C0C0;
 $shadow: $border / 1;
 $smaller: 0.8em;
 
+
 @mixin rounded-well {
 	padding: $margin;
    margin: $margin 0 0 0;
@@ -21,8 +22,12 @@ $smaller: 0.8em;
    box-shadow: 2px 2px 2px 2px $shadow;
 }
 
+	
 .kblog {
 	font-family:Verdana, Arial, Helvetika;
+	.slogan {
+		color: $border/3;
+	}
 	padding: 0 50px 0 50px;
 	.pagination-links {
 		text-align: center;

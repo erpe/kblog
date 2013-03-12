@@ -1,3 +1,4 @@
+<% limit = limit || false %>
 <article class="kblog-article">
 	<aside class="kblog-created">
 		<%= localize(article.created_at, format: :long) %>
@@ -5,12 +6,17 @@
 	<h2><%= article.title %></h2>
 
 	<div class="kblog-content">
-		<%= textilize(article.content).html_safe %>
+		<% if limit %>
+			<%= textilize(truncate(article.content, :length => limit)).html_safe %>
+		<% else %>
+			<%= textilize(article.content).html_safe %>
+		<% end %>
 	</div>
 	<% if defined?(current_user) && Kblog::Article.user_rights(current_user) %>
-	<div class="kblog-links">
-		<%= link_to 'Edit', kblog.edit_article_path(article) %> |
-		<%= link_to 'Destroy', kblog.article_path(article), :confirm => 'Are you sure?', :method => :delete %>
-	</div>
+		<div class="kblog-links">
+			<%= link_to 'Edit', kblog.edit_article_path(article) %> |
+			<%= link_to 'Destroy', kblog.article_path(article), :confirm => 'Are you sure?', :method => :delete %>
+		</div>
 	<% end %>
+	<%= link_to("more", kblog.article_path(article)) if limit %>
 </article>
