@@ -7,7 +7,7 @@
 
 	<div class="kblog-content">
 		<% if limit %>
-			<%= textilize(truncate(article.content, :length => limit)).html_safe %>
+			<%= textilize(truncate(article.content, :length => limit, :omission => "... <em>#{link_to('continued', kblog.article_path(article))}</em> ")).html_safe %>
 		<% else %>
 			<%= textilize(article.content).html_safe %>
 		<% end %>
@@ -18,5 +18,4 @@
 			<%= link_to 'Destroy', kblog.article_path(article), :confirm => 'Are you sure?', :method => :delete %>
 		</div>
 	<% end %>
-	<%= link_to("more", kblog.article_path(article)) if limit %>
 </article>
