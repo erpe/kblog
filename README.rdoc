@@ -12,37 +12,44 @@ No relation to author present.
 * rake db:migrate
 * rails g kblog # creates kblog_init.rb in config/initializers
 * add the engine to route.rb: 
-
-<tt>mount Kblog::Engine => "/kblog"</tt>
+	
+	
+	# routes.rb
+	mount Kblog::Engine => "/kblog"
 
 * perhaps add provided css to your layoutfile:
 
-<tt><%= stylesheet_link_tag 'kblog/articles', :media => "all" %></tt>
+
+	<%= stylesheet_link_tag 'kblog/articles', :media => "all" %>
+
 
 adopt config/initializer/kblog_init.rb:
 
-[role-based authentication]	role-based rights to create/alter blog-articles  
-										user_class must respond_to :roles - and each role
-										tring representation role.to_s == Kblog.auth_role  
-										expects *current_user* beeing available in views and 										 controller
+<b>role-based authentication</b>::		role-based rights to create/alter blog-articles user_class must respond_to :roles - and each roles string representation <tt>role.to_s == Kblog.auth_role</tt> expects *current_user* beeing available in views and controller
 
-<tt>Kblog.auth_type = 'role'</tt>
 
-<tt>Kblog.auth_role = 'blogger'   # role needed to alter blogs</tt>
+	# config/initializer/kblog_init.rb
+	Kblog.auth_type = 'role'
+	Kblog.auth_role = 'blogger'   # role needed to alter blogs
 
-[basic-auth]	makes use of simple http-basic auth.
-					configure with desired name/passwword
-
-<tt>Kblog.auth_type == 'basic'</tt>
-
-<tt>Kblog.authname = 'blogger'</tt>
-
-<tt>Kblog.authpassword = 'changeme'</tt>
+<b>basic-auth</b>::	makes use of simple http-basic auth. configure with desired name/passwword
+	
+	
+	# config/initializer/kblog_init.rb
+	Kblog.auth_type == 'basic'
+	Kblog.authname = 'blogger'
+	Kblog.authpassword = 'changeme'
 
 == usage
 
 * add helper 
-<tt><%= display_latest_articles(num=1) %></tt> to your views
+
+use it for displaying <num> articles.
+if argument <truncate> is greater than 0 - blog-text will be truncated after <truncate> chars
+
+	<%= display_latest_articles(num,truncate=0) %> 
+
+to your views
 * if mounted to /kblog visit index: /kblog/articles - 
 
 

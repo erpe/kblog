@@ -1,7 +1,13 @@
 module Kblog
   module ArticlesHelper
-		
-		def display_latest_articles(num=1,limit=0)
+	
+
+		# renders :num: articles
+		# if limit is given an greater than 0
+		# resulting articles will be truncated after 
+		# :limit: chars	
+		#
+		def display_latest_articles(num,limit=0)
 			truncate = limit > 0 ? limit : nil
 			render(:partial => 'kblog/articles/article', :collection => limit_articles(num), :locals => { :limit => truncate} )
 		end

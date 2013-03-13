@@ -7,13 +7,9 @@ module Kblog
   	
 		before_filter :set_blog_user
 		before_filter :set_article, only: [:show, :edit, :update, :destroy]
-		#before_filter :authenticate, only: [:edit, :update, :create, :destroy] 
-
-		if Kblog.auth_type == 'basic'
-	  		http_basic_authenticate_with :name => Kblog.authname, :password => Kblog.authpassword, :except => [:index,:show]
-	  end
-
-    # GET /articles
+		before_filter :authenticate, only: [:edit, :update, :create, :destroy] 
+	
+	 # GET /articles
     def index
       @articles = Article.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
     end
@@ -73,12 +69,13 @@ module Kblog
       # Never trust parameters from the scary internet, only allow the white list through.
       def article_params
 			params[:article]
-        #params.require(:article).permit(:title, :content)
       end
 		
 		def authenticate
 			if Kblog.auth_type == 'basic'
-				http_basic_authenticate_with :name => Kblog.authname, :password => Kblog.authpassword
+				authenticate_or_request_with_http_basic("Kblog-#{Kblog::VERSION}") do |name,pass|
+					name == Kblog.authname && pass == Kblog.authpassword	
+				end	
 			end
 			if Kblog.auth_type == 'role'
 				unless  Kblog::Article.user_rights(current_user)
